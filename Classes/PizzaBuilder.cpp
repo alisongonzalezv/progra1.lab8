@@ -18,277 +18,82 @@ void PizzaBuilder::WaitForEnterAndClear() {
 }
 
 bool PizzaBuilder::QuiereSeguirAgregando(const std::string& ingredienteNombre) {
-    while (true) {
-        std::cout << "\n¿Quieres seguir agregando " << ingredienteNombre << "?" << std::endl;
-        std::cout << "1. Sí" << std::endl;
-        std::cout << "2. No, pasar al siguiente ingrediente" << std::endl;
-        std::cout << "Elige una opción: ";
-
-        std::string opcion;
-        std::getline(std::cin, opcion);
-
-        if (opcion == "1") {
-            return true;
-        }
-        if (opcion == "2") {
-            return false;
-        }
-
-        std::cout << "Opción no válida. Escribe 1 o 2." << std::endl;
-    }
-}
-
-void PizzaBuilder::BuildPizza() {
-    std::cout << "=== Constructor de pizza ===" << std::endl;
-    std::cout << "¡Vamos a armar tu pizza!" << std::endl;
-
-    SelectTomatoes();
-    IrAlSiguienteIngrediente();
-    WaitForEnterAndClear();
+    std::cout << "\n¿Deseas agregar otro tipo de " << ingredienteNombre << "? (s/n): ";
+    char respuesta;
+    std::cin >> respuesta;
+    std::cin.ignore(10000, '\n');
+    return (respuesta == 's' || respuesta == 'S');
 }
 
 void PizzaBuilder::IrAlSiguienteIngrediente() {
-    SelectCheese();
-    SelectMeat();
-    SelectHerb();
-    std::cout << "No existen más ingredientes para tu pizza." << std::endl;
-}
-
-void PizzaBuilder::MostrarGrupo(const std::string& nombre, const std::vector<std::string>& ingredientes) const {
-    std::cout << nombre << " (" << ingredientes.size() << "):" << std::endl;
-    if (ingredientes.empty()) {
-        std::cout << "- Ninguno" << std::endl;
-        return;
-    }
-
-    for (const auto& ingrediente : ingredientes) {
-        std::cout << "- " << ingrediente << std::endl;
-    }
-}
-
-int PizzaBuilder::ContarTiposAgregados() const {
-    int tipos = 0;
-    if (!selectedTomatoes_.empty()) {
-        ++tipos;
-    }
-    if (!selectedCheeses_.empty()) {
-        ++tipos;
-    }
-    if (!selectedMeats_.empty()) {
-        ++tipos;
-    }
-    if (!selectedHerbs_.empty()) {
-        ++tipos;
-    }
-    return tipos;
-}
-
-void PizzaBuilder::DisplayFinalPizza() const {
-    std::cout << "Tu pizza tiene los siguientes ingredientes:" << std::endl;
-    std::cout << std::endl;
-    MostrarGrupo("Tomates", selectedTomatoes_);
-    MostrarGrupo("Queso", selectedCheeses_);
-    MostrarGrupo("Carnes", selectedMeats_);
-    MostrarGrupo("Hierbas", selectedHerbs_);
-
-    std::cout << std::endl;
-    switch (ContarTiposAgregados()) {
-    case 0:
-        std::cout << "No agregaste ingredientes a tu pizza." << std::endl;
-        break;
-    case 1:
-        if (!selectedTomatoes_.empty()) {
-            std::cout << "Tu pizza solo tiene tomate." << std::endl;
-        } else {
-            std::cout << "Tu pizza tiene un solo tipo de ingrediente." << std::endl;
-        }
-        break;
-    case 2:
-        std::cout << "Tu pizza ya tiene un segundo ingrediente." << std::endl;
-        break;
-    case 3:
-        std::cout << "Tu pizza ya tiene un tercer ingrediente." << std::endl;
-        break;
-    default:
-        std::cout << "Tu pizza ya tiene los cuatro ingredientes." << std::endl;
-        break;
-    }
-
-    std::cout << "¡Buen provecho!" << std::endl;
+    WaitForEnterAndClear();
 }
 
 void PizzaBuilder::SelectTomatoes() {
-    IngredientSelector<TomatoesRepository> selector(tomatoRepo_, availableTomatoes_, "tomate");
-    bool yaPregunto = false;
-
-    while (true) {
-        std::cout << "\n--- Selección de tomates ---" << std::endl;
+    IngredientSelector<TomatoesRepository> selector(tomatoRepo_, availableTomatoes_, "Tomate");
+    do {
         selector.DisplayAvailableIngredients();
+        std::cout << "\nIngresa el nombre del tipo de Tomate a agregar: ";
+        std::string nombreIngrediente;
+        std::getline(std::cin, nombreIngrediente);
 
-        std::cout << "\nIngresa el tipo de tomate (o 'listo' para terminar): ";
-        std::string userChoice;
-        std::getline(std::cin, userChoice);
-
-        if (userChoice == "listo" || userChoice == "LISTO") {
-#ifdef _WIN32
-            system("cls");
-#else
-            system("clear");
-#endif
-            break;
-        }
-
-        bool exitosa = selector.AddIngredientToPizza(userChoice, selectedTomatoes_);
-        if (exitosa) {
-            std::cout << "La selección fue exitosa." << std::endl;
-        } else {
-            std::cout << "La selección no fue exitosa." << std::endl;
-        }
-
-        if (exitosa && !yaPregunto) {
-            yaPregunto = true;
-            if (!QuiereSeguirAgregando("tomate")) {
-#ifdef _WIN32
-                system("cls");
-#else
-                system("clear");
-#endif
-                return;
-            }
-        }
-
-        WaitForEnterAndClear();
-    }
+        selector.AddIngredientToPizza(nombreIngrediente, selectedTomatoes_);
+    } while (QuiereSeguirAgregando("Tomate"));
 }
 
 void PizzaBuilder::SelectCheese() {
-    IngredientSelector<CheeseRepository> selector(cheeseRepo_, availableCheeses_, "queso");
-    bool yaPregunto = false;
-
-    while (true) {
-        std::cout << "\n--- Selección de quesos ---" << std::endl;
+    IngredientSelector<CheeseRepository> selector(cheeseRepo_, availableCheeses_, "Queso");
+    do {
         selector.DisplayAvailableIngredients();
+        std::cout << "\nIngresa el nombre del tipo de Queso a agregar: ";
+        std::string nombreIngrediente;
+        std::getline(std::cin, nombreIngrediente);
 
-        std::cout << "\nIngresa el tipo de queso (o 'listo' para terminar): ";
-        std::string userChoice;
-        std::getline(std::cin, userChoice);
-
-        if (userChoice == "listo" || userChoice == "LISTO") {
-#ifdef _WIN32
-            system("cls");
-#else
-            system("clear");
-#endif
-            break;
-        }
-
-        bool exitosa = selector.AddIngredientToPizza(userChoice, selectedCheeses_);
-        if (exitosa) {
-            std::cout << "La selección fue exitosa." << std::endl;
-        } else {
-            std::cout << "La selección no fue exitosa." << std::endl;
-        }
-
-        if (exitosa && !yaPregunto) {
-            yaPregunto = true;
-            if (!QuiereSeguirAgregando("queso")) {
-#ifdef _WIN32
-                system("cls");
-#else
-                system("clear");
-#endif
-                return;
-            }
-        }
-
-        WaitForEnterAndClear();
-    }
+        selector.AddIngredientToPizza(nombreIngrediente, selectedCheeses_);
+    } while (QuiereSeguirAgregando("Queso"));
 }
 
 void PizzaBuilder::SelectMeat() {
-    IngredientSelector<MeatsRepository> selector(meatRepo_, availableMeats_, "carne");
-    bool yaPregunto = false;
-
-    while (true) {
-        std::cout << "\n--- Selección de carnes ---" << std::endl;
-        selector.DisplayAvailableIngredients();
-
-        std::cout << "\nIngresa el tipo de carne (o 'listo' para terminar): ";
-        std::string userChoice;
-        std::getline(std::cin, userChoice);
-
-        if (userChoice == "listo" || userChoice == "LISTO") {
-#ifdef _WIN32
-            system("cls");
-#else
-            system("clear");
-#endif
-            break;
-        }
-
-        bool exitosa = selector.AddIngredientToPizza(userChoice, selectedMeats_);
-        if (exitosa) {
-            std::cout << "La selección fue exitosa." << std::endl;
-        } else {
-            std::cout << "La selección no fue exitosa." << std::endl;
-        }
-
-        if (exitosa && !yaPregunto) {
-            yaPregunto = true;
-            if (!QuiereSeguirAgregando("carne")) {
-#ifdef _WIN32
-                system("cls");
-#else
-                system("clear");
-#endif
-                return;
-            }
-        }
-
-        WaitForEnterAndClear();
-    }
+    // Implementado por el companero asignado a carnes
 }
 
 void PizzaBuilder::SelectHerb() {
-    IngredientSelector<HerbsRepository> selector(herbRepo_, availableHerbs_, "hierba");
-    bool yaPregunto = false;
+    // Implementado por el companero asignado a hierbas
+}
 
-    while (true) {
-        std::cout << "\n--- Selección de hierbas ---" << std::endl;
-        selector.DisplayAvailableIngredients();
+void PizzaBuilder::BuildPizza() {
+    std::cout << "=== CONSTRUCCION DE PIZZA ===\n\n";
 
-        std::cout << "\nIngresa el tipo de hierba (o 'listo' para terminar): ";
-        std::string userChoice;
-        std::getline(std::cin, userChoice);
+    SelectTomatoes();
+    IrAlSiguienteIngrediente();
 
-        if (userChoice == "listo" || userChoice == "LISTO") {
-#ifdef _WIN32
-            system("cls");
-#else
-            system("clear");
-#endif
-            break;
-        }
+    SelectCheese();
+    IrAlSiguienteIngrediente();
+}
 
-        bool exitosa = selector.AddIngredientToPizza(userChoice, selectedHerbs_);
-        if (exitosa) {
-            std::cout << "La selección fue exitosa." << std::endl;
-        } else {
-            std::cout << "La selección no fue exitosa." << std::endl;
-        }
-
-        if (exitosa && !yaPregunto) {
-            yaPregunto = true;
-            if (!QuiereSeguirAgregando("hierba")) {
-#ifdef _WIN32
-                system("cls");
-#else
-                system("clear");
-#endif
-                return;
-            }
-        }
-
-        WaitForEnterAndClear();
+void PizzaBuilder::MostrarGrupo(const std::string& nombre, const std::vector<std::string>& ingredientes) const {
+    std::cout << "- " << nombre << ": ";
+    if (ingredientes.empty()) {
+        std::cout << "Ninguno\n";
+        return;
     }
+    for (size_t i = 0; i < ingredientes.size(); ++i) {
+        std::cout << ingredientes[i];
+        if (i < ingredientes.size() - 1) std::cout << ", ";
+    }
+    std::cout << "\n";
+}
+
+int PizzaBuilder::ContarTiposAgregados() const {
+    return selectedTomatoes_.size() + selectedCheeses_.size() + selectedMeats_.size() + selectedHerbs_.size();
+}
+
+void PizzaBuilder::DisplayFinalPizza() const {
+    std::cout << "=== RESUMEN DE TU PIZZA ===\n";
+    MostrarGrupo("Tomates", selectedTomatoes_);
+    MostrarGrupo("Quesos", selectedCheeses_);
+    MostrarGrupo("Carnes", selectedMeats_);
+    MostrarGrupo("Hierbas", selectedHerbs_);
+    std::cout << "Total de tipos de ingredientes elegidos: " << ContarTiposAgregados() << "\n";
+    std::cout << "============================\n";
 }
