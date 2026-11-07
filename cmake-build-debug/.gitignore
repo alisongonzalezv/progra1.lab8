@@ -1,0 +1,5 @@
+cmake-build-debug/
+.idea/
+*.user
+x64/
+.DS_Store

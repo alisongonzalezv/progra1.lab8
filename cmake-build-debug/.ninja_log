@@ -1,0 +1,12 @@
+# ninja log v7
+3	289	1794041812411117402	CMakeFiles/Lab8Progra1.dir/main.cpp.o	18c4fe65486be4a3
+2	6	1794041809584053092	clean	2d0fd04d4e03ffc1
+1	59	1794041980579175941	build.ninja	3826b59f09b4653b
+1	59	1794041980579175941	/Users/alisongv/Documents/PROGRAMACION I /Lab8Progra1/cmake-build-debug/cmake_install.cmake	3826b59f09b4653b
+1	5	1794041980584558966	clean	2d0fd04d4e03ffc1
+3	320	1794041983288472685	CMakeFiles/Lab8Progra1.dir/Classes/TomatoesRepository.cpp.o	6f554de2969f56b7
+2	339	1794041983288133812	CMakeFiles/Lab8Progra1.dir/Classes/IngredientSelector.cpp.o	1072ffc3ab3f8f6b
+3	356	1794041983288606018	CMakeFiles/Lab8Progra1.dir/main.cpp.o	84f86ecb95cb748
+3	380	1794041983288292311	CMakeFiles/Lab8Progra1.dir/Classes/PizzaBuilder.cpp.o	52e0e064c3b39012
+2	422	1794041983287876521	CMakeFiles/Lab8Progra1.dir/Classes/DataLoader.cpp.o	51dd7fa271154ff1
+422	451	1794041983707601303	Lab8Progra1	c40ac3957718b0d9

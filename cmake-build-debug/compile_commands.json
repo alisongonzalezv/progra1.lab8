@@ -1,0 +1,32 @@
+[
+{
+  "directory": "/Users/alisongv/Documents/PROGRAMACION I /Lab8Progra1/cmake-build-debug",
+  "command": "/usr/bin/c++ -I\"/Users/alisongv/Documents/PROGRAMACION I /Lab8Progra1/Headers\" -g -std=gnu++20 -arch arm64 -fcolor-diagnostics -o CMakeFiles/Lab8Progra1.dir/Classes/DataLoader.cpp.o -c \"/Users/alisongv/Documents/PROGRAMACION I /Lab8Progra1/Classes/DataLoader.cpp\"",
+  "file": "/Users/alisongv/Documents/PROGRAMACION I /Lab8Progra1/Classes/DataLoader.cpp",
+  "output": "/Users/alisongv/Documents/PROGRAMACION I /Lab8Progra1/cmake-build-debug/CMakeFiles/Lab8Progra1.dir/Classes/DataLoader.cpp.o"
+},
+{
+  "directory": "/Users/alisongv/Documents/PROGRAMACION I /Lab8Progra1/cmake-build-debug",
+  "command": "/usr/bin/c++ -I\"/Users/alisongv/Documents/PROGRAMACION I /Lab8Progra1/Headers\" -g -std=gnu++20 -arch arm64 -fcolor-diagnostics -o CMakeFiles/Lab8Progra1.dir/Classes/IngredientSelector.cpp.o -c \"/Users/alisongv/Documents/PROGRAMACION I /Lab8Progra1/Classes/IngredientSelector.cpp\"",
+  "file": "/Users/alisongv/Documents/PROGRAMACION I /Lab8Progra1/Classes/IngredientSelector.cpp",
+  "output": "/Users/alisongv/Documents/PROGRAMACION I /Lab8Progra1/cmake-build-debug/CMakeFiles/Lab8Progra1.dir/Classes/IngredientSelector.cpp.o"
+},
+{
+  "directory": "/Users/alisongv/Documents/PROGRAMACION I /Lab8Progra1/cmake-build-debug",
+  "command": "/usr/bin/c++ -I\"/Users/alisongv/Documents/PROGRAMACION I /Lab8Progra1/Headers\" -g -std=gnu++20 -arch arm64 -fcolor-diagnostics -o CMakeFiles/Lab8Progra1.dir/Classes/PizzaBuilder.cpp.o -c \"/Users/alisongv/Documents/PROGRAMACION I /Lab8Progra1/Classes/PizzaBuilder.cpp\"",
+  "file": "/Users/alisongv/Documents/PROGRAMACION I /Lab8Progra1/Classes/PizzaBuilder.cpp",
+  "output": "/Users/alisongv/Documents/PROGRAMACION I /Lab8Progra1/cmake-build-debug/CMakeFiles/Lab8Progra1.dir/Classes/PizzaBuilder.cpp.o"
+},
+{
+  "directory": "/Users/alisongv/Documents/PROGRAMACION I /Lab8Progra1/cmake-build-debug",
+  "command": "/usr/bin/c++ -I\"/Users/alisongv/Documents/PROGRAMACION I /Lab8Progra1/Headers\" -g -std=gnu++20 -arch arm64 -fcolor-diagnostics -o CMakeFiles/Lab8Progra1.dir/Classes/TomatoesRepository.cpp.o -c \"/Users/alisongv/Documents/PROGRAMACION I /Lab8Progra1/Classes/TomatoesRepository.cpp\"",
+  "file": "/Users/alisongv/Documents/PROGRAMACION I /Lab8Progra1/Classes/TomatoesRepository.cpp",
+  "output": "/Users/alisongv/Documents/PROGRAMACION I /Lab8Progra1/cmake-build-debug/CMakeFiles/Lab8Progra1.dir/Classes/TomatoesRepository.cpp.o"
+},
+{
+  "directory": "/Users/alisongv/Documents/PROGRAMACION I /Lab8Progra1/cmake-build-debug",
+  "command": "/usr/bin/c++ -I\"/Users/alisongv/Documents/PROGRAMACION I /Lab8Progra1/Headers\" -g -std=gnu++20 -arch arm64 -fcolor-diagnostics -o CMakeFiles/Lab8Progra1.dir/main.cpp.o -c \"/Users/alisongv/Documents/PROGRAMACION I /Lab8Progra1/main.cpp\"",
+  "file": "/Users/alisongv/Documents/PROGRAMACION I /Lab8Progra1/main.cpp",
+  "output": "/Users/alisongv/Documents/PROGRAMACION I /Lab8Progra1/cmake-build-debug/CMakeFiles/Lab8Progra1.dir/main.cpp.o"
+}
+]
