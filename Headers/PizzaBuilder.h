@@ -1,8 +1,8 @@
 #pragma once
-#include <vector>
-#include <string>
 #include "TomatoesRepository.h"
-#include "IngredientSelector.h"
+#include "CheeseRepository.h"
+#include <string>
+#include <vector>
 
 class PizzaBuilder {
 public:
@@ -23,6 +23,7 @@ private:
     int ContarTiposAgregados() const;
 
     TomatoesRepository tomatoRepo_;
+    CheeseRepository cheeseRepo_;
 
     // Cada miembro llena su lista desde su método Select.
     std::vector<std::string> selectedTomatoes_;
@@ -33,6 +34,7 @@ private:
     const std::vector<std::string> availableTomatoes_ = {"Cherry", "Roma", "Beefsteak", "Heirloom", "Grape"};
     // TODO: agrega aquí la lista de tu ingrediente.
     // const std::vector<std::string> availableCheeses_ = { ... };
+    const std::vector<std::string> availableCheeses_ = {"Mozzarella", "Cheddar", "Parmesan", "Cream Cheese", "Gouda", "Blue Cheese", "Feta"};
     // const std::vector<std::string> availableMeats_ = { ... };
     // const std::vector<std::string> availableHerbs_ = { ... };
 };
