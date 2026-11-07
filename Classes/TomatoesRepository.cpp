@@ -1,6 +1,8 @@
 #include "TomatoesRepository.h"
+#include "DataLoader.h"
+#include <string>
 #include <stdexcept>
-
+#include <utility>
 
 TomatoesRepository::TomatoesRepository() {
     auto data = DataLoader::LoadFromFile("tomatoes.txt");
