@@ -54,7 +54,15 @@ void PizzaBuilder::SelectCheese() {
 }
 
 void PizzaBuilder::SelectMeat() {
-    // Implementado por el companero asignado a carnes
+    IngredientSelector<MeatsRepository> selector(meatRepo_, availableMeats_, "Carne");
+    do {
+        selector.DisplayAvailableIngredients();
+        std::cout << "\nIngresa el nombre del tipo de Carne a agregar: ";
+        std::string nombreIngrediente;
+        std::getline(std::cin, nombreIngrediente);
+
+        selector.AddIngredientToPizza(nombreIngrediente, selectedMeats_);
+    } while (QuiereSeguirAgregando("Carne"));
 }
 
 void PizzaBuilder::SelectHerb() {
@@ -68,6 +76,9 @@ void PizzaBuilder::BuildPizza() {
     IrAlSiguienteIngrediente();
 
     SelectCheese();
+    IrAlSiguienteIngrediente();
+
+    SelectMeat();
     IrAlSiguienteIngrediente();
 }
 
