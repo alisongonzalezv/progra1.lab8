@@ -1,6 +1,7 @@
 #pragma once
 #include "TomatoesRepository.h"
 #include "CheeseRepository.h"
+#include "MeatsRepository.h"
 #include <string>
 #include <vector>
 
@@ -14,6 +15,7 @@ public:
 private:
     void WaitForEnterAndClear();
     bool QuiereSeguirAgregandoTomate();
+	bool QuiereSeguirAgregandoIngrediente(const std::string& ingrediente);
     void SelectTomatoes();
     void IrAlSiguienteIngrediente();
     void SelectCheese();
@@ -24,6 +26,7 @@ private:
 
     TomatoesRepository tomatoRepo_;
     CheeseRepository cheeseRepo_;
+	MeatsRepository meatRepo_;
 
     // Cada miembro llena su lista desde su método Select.
     std::vector<std::string> selectedTomatoes_;
@@ -35,6 +38,6 @@ private:
     // TODO: agrega aquí la lista de tu ingrediente.
     // const std::vector<std::string> availableCheeses_ = { ... };
     const std::vector<std::string> availableCheeses_ = {"Mozzarella", "Cheddar", "Parmesan", "Cream Cheese", "Gouda", "Blue Cheese", "Feta"};
-    // const std::vector<std::string> availableMeats_ = { ... };
-    // const std::vector<std::string> availableHerbs_ = { ... };
+    const std::vector<std::string> availableMeats_ = { "Pepperoni", "Bacon", "Chicken", "Shrimp", "Mignon", "Ham", "Sausage", "Prosciutto" };
 };
+    // const std::vector<std::string> availableHerbs_ = { ... };
